@@ -1,0 +1,734 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Trelloso API",
+    "dateExported": "2023-12-28T15:42:04.269Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "a467047b-62a4-4cbb-bf3f-dc393dbb2b05",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "New Token",
+            "url": "{{base_url}}/auth/token",
+            "method": "POST",
+            "sortNum": 5000,
+            "created": "2023-12-28T13:37:40.635Z",
+            "modified": "2023-12-28T13:49:36.679Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "user1"
+                    },
+                    {
+                        "name": "password",
+                        "value": "123456"
+                    }
+                ]
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.access_token",
+                    "action": "setto",
+                    "value": "{{token, local}}"
+                }
+            ]
+        },
+        {
+            "_id": "d4ff7d7b-fecc-412c-b13c-297c1f90b1a7",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Get Users",
+            "url": "{{base_url}}/users",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-12-28T13:37:40.610Z",
+            "modified": "2023-12-28T15:31:58.036Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "be0b059b-6cde-486a-a031-14d7621a3be9",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Create User",
+            "url": "{{base_url}}/users",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-12-28T13:37:40.611Z",
+            "modified": "2023-12-28T15:32:08.818Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"string\",\n  \"username\": \"string\",\n  \"avatar_url\": \"string\",\n  \"password\": \"string\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "5f26b3d1-4b30-48a8-b8c3-5f59eb6b10ae",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Change User",
+            "url": "{{base_url}}/users/1",
+            "method": "PATCH",
+            "sortNum": 30000,
+            "created": "2023-12-28T13:37:40.612Z",
+            "modified": "2023-12-28T15:32:16.292Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"avatar_url\": \"http://\"\n}\n  ",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "b42c89a2-fc2b-473a-8c16-616583a503e3",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Delete User",
+            "url": "{{base_url}}/users/4",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-12-28T13:37:40.613Z",
+            "modified": "2023-12-28T15:27:40.013Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "c7486ea7-f8a7-46c7-83df-4a17f49b7851",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Get My Boards",
+            "url": "{{base_url}}/users/me/boards",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2023-12-28T13:37:40.614Z",
+            "modified": "2023-12-28T15:27:21.682Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "c8e8b864-a42e-4b74-9078-229e64bff6f8",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Create Board",
+            "url": "{{base_url}}/boards",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2023-12-28T13:37:40.615Z",
+            "modified": "2023-12-28T15:32:31.514Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Board 2\",\n  \"color\": \"#FFFFF\",\n\t\"favorito\": true\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "8b04b1e5-a5a6-4c68-8e4c-17ffb2f28e65",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Change Board",
+            "url": "{{base_url}}/boards/2",
+            "method": "PATCH",
+            "sortNum": 70000,
+            "created": "2023-12-28T13:37:40.616Z",
+            "modified": "2023-12-28T15:32:35.185Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Board 2_1\",\n  \"color\": \"string\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "999ed28f-4597-445d-ab5f-5be73f0d8e30",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Delete Board",
+            "url": "{{base_url}}/boards/2",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2023-12-28T13:37:40.617Z",
+            "modified": "2023-12-28T15:32:43.645Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "15eb5c82-6eca-4d4a-affc-7a6a53f37e59",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Get Board Lists",
+            "url": "{{base_url}}/boards/1/lists",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2023-12-28T13:37:40.618Z",
+            "modified": "2023-12-28T15:28:08.230Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "74150540-e1c6-4b5b-8a9b-ec692c5297fd",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Create List",
+            "url": "{{base_url}}/lists",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2023-12-28T13:37:40.619Z",
+            "modified": "2023-12-28T15:28:16.689Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Lista 3\",\n  \"board_id\": 1,\n\t\"position\": 2\n}\n ",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{% response 'body', 'req_af65f4884c9348c987473c424a1abb25', 'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "783c7f6c-18e8-488e-8876-13926ed15867",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Change List",
+            "url": "{{base_url}}/lists/2",
+            "method": "PATCH",
+            "sortNum": 110000,
+            "created": "2023-12-28T13:37:40.620Z",
+            "modified": "2023-12-28T15:28:20.728Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"List 2\",\n  \"board_id\": 1\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{% response 'body', 'req_af65f4884c9348c987473c424a1abb25', 'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "313f46cb-59a6-424d-81de-245b537916b5",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Delete List",
+            "url": "{{base_url}}/lists/2",
+            "method": "DELETE",
+            "sortNum": 120000,
+            "created": "2023-12-28T13:37:40.621Z",
+            "modified": "2023-12-28T15:28:28.214Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{% response 'body', 'req_af65f4884c9348c987473c424a1abb25', 'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "1beee1c8-3164-41a0-8701-adc9bc895602",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Get List Cards",
+            "url": "{{base_url}}/lists/1/cards",
+            "method": "GET",
+            "sortNum": 130000,
+            "created": "2023-12-28T13:37:40.622Z",
+            "modified": "2023-12-28T15:28:38.837Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{% response 'body', 'req_af65f4884c9348c987473c424a1abb25', 'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "d0276bfc-e010-4423-a3db-b4b07e2bdf54",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Get Card Details",
+            "url": "{{base_url}}/cards/1",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2023-12-28T13:37:40.623Z",
+            "modified": "2023-12-28T15:28:49.912Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "fb6ce20b-0c62-4003-b135-81800f848a35",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Create Card",
+            "url": "{{base_url}}/cards",
+            "method": "POST",
+            "sortNum": 150000,
+            "created": "2023-12-28T13:37:40.624Z",
+            "modified": "2023-12-28T15:30:20.489Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Card 4\",\n  \"date\": \"2023-12-28T03:19:28.168Z\",\n  \"list_id\": 1\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{% response 'body', 'req_af65f4884c9348c987473c424a1abb25', 'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "187e8ad9-1402-4e97-bd1e-a467e2d688e8",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Change Card",
+            "url": "{{base_url}}/cards/4",
+            "method": "PATCH",
+            "sortNum": 160000,
+            "created": "2023-12-28T13:37:40.625Z",
+            "modified": "2023-12-28T15:28:57.773Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Card 4_1\",\n  \"date\": \"2023-12-28T03:24:51.184Z\",\n  \"list_id\": 1\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{% response 'body', 'req_af65f4884c9348c987473c424a1abb25', 'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "6122ec31-c74f-4fb5-a406-b001d2366d1e",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Delete Card",
+            "url": "{{base_url}}/cards/4",
+            "method": "DELETE",
+            "sortNum": 170000,
+            "created": "2023-12-28T13:37:40.626Z",
+            "modified": "2023-12-28T15:40:53.348Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "80ae1e69-c86a-4d5e-a510-3e310b8ff35c",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Get Card Comments",
+            "url": "{{base_url}}/cards/1/comments",
+            "method": "GET",
+            "sortNum": 180000,
+            "created": "2023-12-28T13:37:40.627Z",
+            "modified": "2023-12-28T15:29:15.374Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{% response 'body', 'req_af65f4884c9348c987473c424a1abb25', 'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "cf9d7a2d-b3a1-4ff8-b0f6-b8e4c3692810",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Create Card Comment",
+            "url": "{{base_url}}/card_comments",
+            "method": "POST",
+            "sortNum": 190000,
+            "created": "2023-12-28T13:37:40.628Z",
+            "modified": "2023-12-28T15:29:24.496Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"comment\": \"string\",\n  \"card_id\": 3\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{% response 'body', 'req_af65f4884c9348c987473c424a1abb25', 'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "647ff603-ce5b-498a-b0b5-77f740caac6b",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Change Card Comment",
+            "url": "{{base_url}}/card_comments/3",
+            "method": "PATCH",
+            "sortNum": 200000,
+            "created": "2023-12-28T13:37:40.629Z",
+            "modified": "2023-12-28T15:29:32.579Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"comment\": \"string novo\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{% response 'body', 'req_af65f4884c9348c987473c424a1abb25', 'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "4cfcd454-4835-41e1-a376-01c0544977ed",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Delete Card Comment",
+            "url": "{{base_url}}/card_comments/4",
+            "method": "DELETE",
+            "sortNum": 210000,
+            "created": "2023-12-28T13:37:40.630Z",
+            "modified": "2023-12-28T15:29:39.951Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{% response 'body', 'req_af65f4884c9348c987473c424a1abb25', 'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "12c0cd0e-eec0-4a22-86ed-f26c52d69a99",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Delete Card Tag",
+            "url": "{{ _.baseUrl }}/card_tags/1/3",
+            "method": "DELETE",
+            "sortNum": 220000,
+            "created": "2023-12-28T13:37:40.631Z",
+            "modified": "2023-12-28T13:37:40.631Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": ""
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{% response 'body', 'req_af65f4884c9348c987473c424a1abb25', 'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+            },
+            "docs": ""
+        },
+        {
+            "_id": "fef8c3dd-973a-42bf-9d5d-e3bd34476420",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Get Card Tags",
+            "url": "{{base_url}}/cards/1/tags",
+            "method": "GET",
+            "sortNum": 230000,
+            "created": "2023-12-28T13:37:40.632Z",
+            "modified": "2023-12-28T15:30:55.656Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{% response 'body', 'req_af65f4884c9348c987473c424a1abb25', 'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "556801e4-0bfa-4022-b526-0b4f748d44d2",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Create Card Tag",
+            "url": "{{base_url}}/card_tags",
+            "method": "POST",
+            "sortNum": 240000,
+            "created": "2023-12-28T13:37:40.633Z",
+            "modified": "2023-12-28T15:31:02.969Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"card_id\": 1,\n  \"tag_id\": 3\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{% response 'body', 'req_af65f4884c9348c987473c424a1abb25', 'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "3eef43f0-ca35-4ca1-8568-0a34c9f8ca9e",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Get Card Members",
+            "url": "{{base_url}}/cards/1/members",
+            "method": "GET",
+            "sortNum": 250000,
+            "created": "2023-12-28T13:37:40.634Z",
+            "modified": "2023-12-28T15:17:54.576Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "2a242d1e-552b-43bf-900b-22e87bcaddd4",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Create Card Member",
+            "url": "{{base_url}}/card_members",
+            "method": "POST",
+            "sortNum": 255000,
+            "created": "2023-12-28T15:16:10.425Z",
+            "modified": "2023-12-28T15:22:41.221Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"card_id\": 3,\n  \"member_id\": 2\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "aa0aacb9-e58f-41fe-8b5b-de03b821491e",
+            "colId": "c9dd0326-8669-4e2e-bad1-7245b1f2a165",
+            "containerId": "",
+            "name": "Delete Card Member",
+            "url": "{{base_url}}/card_members/2",
+            "method": "DELETE",
+            "sortNum": 257500,
+            "created": "2023-12-28T15:19:55.761Z",
+            "modified": "2023-12-28T15:25:39.366Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/8.5.1"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            },
+            "tests": []
+        }
+    ]
+}
