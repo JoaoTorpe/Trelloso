@@ -14,3 +14,7 @@
     color: #777;
   }
   
+
+  #view:hover{
+    cursor: pointer;
+  }
