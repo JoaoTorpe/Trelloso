@@ -1,3 +1,4 @@
+import { getCurrentUser } from "./userService.js";
 
 //autentica usuario e armazena token
 export  default async function login(data){
@@ -10,8 +11,9 @@ export  default async function login(data){
   
   
         const token = await response.json();
-        if(token){
+        if(token.access_token){
             localStorage.setItem('token', token.access_token)
+            getCurrentUser(token.access_token)
         }
   
       } 
