@@ -17,13 +17,13 @@
 
         <div class="options">
             <button id="loginBtn" class="headerBtn" >Login</button>
-            <button id="registerBtn" class="headerBtn" >Registrar</button>
+            <button id="registerBtn" class="headerBtn displayNone" >Registrar</button>
         </div>
 
     </header>
     
-<div id="registerContainer" class="displayFlex" >
-<form id="registerForm" >
+<div id="registerContainer" class="displayFlex formCont" >
+<form id="registerForm" class="form">
 
     <input id="registerName" name="name" type="text" placeholder="Nome" >
     <input  id="registerUserName" name="userName" type="text" placeholder="User name">
@@ -34,15 +34,15 @@
 
 </div>
 
-<div id="loginContainer" class="displayNone"  >
-<form id="loginForm" >
+<div id="loginContainer" class="displayNone formCont"  >
+<form id="loginForm" class="form">
     <input  id="loginUserName" name="username" type="text" placeholder="User name">
     <input id = "loginPassword" name="password"  type="password" placeholder="senha">
   
     <span  id="view" >
         👁️
       </span>
-      <input type="submit" value="Login" >
+      <input type="submit" class="headerBtn" value="Login" >
 </form>
 </div>
 

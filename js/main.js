@@ -4,6 +4,7 @@ const registerForm = document.querySelector("#registerForm")
 const loginForm = document.querySelector('#loginForm')
 const view = document.querySelector("#view")
 const loginOp = document.querySelector('#loginBtn')
+const registerOp = document.querySelector('#registerBtn')
 const registerFormContainer = document.querySelector('#registerContainer')
 const loginFormContainer = document.querySelector('#loginContainer')
 
@@ -49,9 +50,33 @@ loginFormContainer.classList.remove('displayNone')
 loginFormContainer.classList.add('displayFlex')
 
 
+loginOp.classList.add('displayNone')
+registerOp.classList.remove('displayNone')
 })
 
+loginOp.addEventListener('click',()=>{
+  registerFormContainer.classList.remove('displayFlex')
+  registerFormContainer.classList.add('displayNone')
+  
+  loginFormContainer.classList.remove('displayNone')
+  loginFormContainer.classList.add('displayFlex')
+  
+  
+  loginOp.classList.add('displayNone')
+  registerOp.classList.remove('displayNone')
+  })
 
+  registerOp.addEventListener('click',()=>{
+    loginFormContainer.classList.remove('displayFlex')
+    loginFormContainer.classList.add('displayNone')
+    
+    registerFormContainer.classList.remove('displayNone')
+    registerFormContainer.classList.add('displayFlex')
+    
+    
+    registerOp.classList.add('displayNone')
+    loginOp.classList.remove('displayNone')
+    })
 
 
 
