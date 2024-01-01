@@ -17,21 +17,25 @@
 
         <div class="options">
             <button id="loginBtn" class="headerBtn" >Login</button>
+            <button id="registerBtn" class="headerBtn" >Registrar</button>
         </div>
 
     </header>
     
-    
-<form id="registerForm" action="">
+<div id="registerContainer" class="displayFlex" >
+<form id="registerForm" >
 
     <input id="registerName" name="name" type="text" placeholder="Nome" >
     <input  id="registerUserName" name="userName" type="text" placeholder="User name">
     <input id = "registerPassword" name="password"  type="password" placeholder="senha">
     <input  id="registerAvatar" name="avatarURL" type="text" placeholder="Avatar URL">
-    <input type="submit" value="Registrar" >
+    <input type="submit" class="headerBtn" value="Registrar" >
 </form>
 
-<form id="loginForm" action="">
+</div>
+
+<div id="loginContainer" class="displayNone"  >
+<form id="loginForm" >
     <input  id="loginUserName" name="username" type="text" placeholder="User name">
     <input id = "loginPassword" name="password"  type="password" placeholder="senha">
   
@@ -40,10 +44,8 @@
       </span>
       <input type="submit" value="Login" >
 </form>
-
+</div>
 
 <script type="module" defer src="js/main.js"></script>
 </body>
-
-
 </html>

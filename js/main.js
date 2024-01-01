@@ -3,7 +3,9 @@ import { registerUser } from "./userService.js"
 const registerForm = document.querySelector("#registerForm")
 const loginForm = document.querySelector('#loginForm')
 const view = document.querySelector("#view")
-
+const loginOp = document.querySelector('#loginBtn')
+const registerFormContainer = document.querySelector('#registerContainer')
+const loginFormContainer = document.querySelector('#loginContainer')
 
 //Envio do form de registro
 registerForm.addEventListener("submit", (e) => {
@@ -36,6 +38,16 @@ view.addEventListener("click",()=>{
   } else {
     passwordInput.type = "password";
   }
+
+})
+
+loginOp.addEventListener('click',()=>{
+registerFormContainer.classList.remove('displayFlex')
+registerFormContainer.classList.add('displayNone')
+
+loginFormContainer.classList.remove('displayNone')
+loginFormContainer.classList.add('displayFlex')
+
 
 })
 
