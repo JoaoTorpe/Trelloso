@@ -94,3 +94,8 @@
   .displayFlex{
     display: flex;
   }
+
+  main{
+    border: solid red;
+    height: 100vh;
+  }

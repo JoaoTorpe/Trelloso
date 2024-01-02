@@ -1,5 +1,5 @@
 import { getCurrentUser } from "./userService.js";
-
+import { revealMain } from "./main.js";
 //autentica usuario e armazena token
 export  default async function login(data){
  
@@ -14,6 +14,7 @@ export  default async function login(data){
         if(token.access_token){
             localStorage.setItem('token', token.access_token)
             getCurrentUser(token.access_token)
+            revealMain()
         }
   
       } 

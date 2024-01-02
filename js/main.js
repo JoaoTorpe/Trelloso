@@ -7,6 +7,8 @@ const loginOp = document.querySelector('#loginBtn')
 const registerOp = document.querySelector('#registerBtn')
 const registerFormContainer = document.querySelector('#registerContainer')
 const loginFormContainer = document.querySelector('#loginContainer')
+const main = document.querySelector('main')
+const exitBtn = document.querySelector('#exitBtn') 
 
 //Envio do form de registro
 registerForm.addEventListener("submit", (e) => {
@@ -20,7 +22,14 @@ registerForm.addEventListener("submit", (e) => {
 
     if(document.querySelector('#passwordValidator').value === newUser.password){
     registerUser(newUser)
+     document.getElementById("registerName").value = ''
+     document.getElementById("registerUserName").value = ''
+     document.getElementById("registerAvatar").value = ''
+     document.getElementById("registerPassword").value  = ''
+     document.querySelector('#passwordValidator').value = ''
+
     alert("Usuario cadastrado!")
+
       revealLogin()
   }
     else{
@@ -50,9 +59,10 @@ view.addEventListener("click",()=>{
 })
 
 
-
+//Eventos
 loginOp.addEventListener('click',()=>revealLogin())
 registerOp.addEventListener('click',()=> revealRegister())
+exitBtn.addEventListener('click',()=>hideMain())
 
 
 //Alternar entre os forms
@@ -80,8 +90,26 @@ registerOp.addEventListener('click',()=> revealRegister())
     }
 
 
+    //Mostrar pagina do usuario logado
+   export function revealMain(){
+    main.classList.remove('displayNone')
+    loginFormContainer.classList.remove('displayFlex')
+    loginFormContainer.classList.add('displayNone')
+    registerFormContainer.classList.remove('displayFlex')
+    registerFormContainer.classList.add('displayNone')
+    loginOp.classList.add('displayNone')
+    registerOp.classList.add('displayNone')
+    exitBtn.classList.remove('displayNone')
+    }
     
- 
+    function hideMain(){
+    loginFormContainer.classList.remove('displayNone')
+    loginFormContainer.classList.add('displayFlex')
+    registerOp.classList.remove('displayNone')
+    exitBtn.classList.add('displayNone')
+    document.querySelector('#loginUserName').value = ''
+    document.querySelector('#loginPassword').value = ''
+    }
 
 
 
