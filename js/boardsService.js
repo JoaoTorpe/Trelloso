@@ -32,12 +32,12 @@ async function getBoards() {
             </div>`
             document.querySelector('#boardsContainer').appendChild(li)
     })
+    
     while (boards.length > 0) {
         boards.pop();
     }
-    
-
-
   }
+
+ 
 
   export {getBoards,generateBoards}

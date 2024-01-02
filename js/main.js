@@ -1,5 +1,6 @@
 import login from "./auth.js"
 import { registerUser } from "./userService.js"
+import { getBoards} from "./boardsService.js"
 const registerForm = document.querySelector("#registerForm")
 const loginForm = document.querySelector('#loginForm')
 const view = document.querySelector("#view")
@@ -10,11 +11,12 @@ const loginFormContainer = document.querySelector('#loginContainer')
 const main = document.querySelector('main')
 const exitBtn = document.querySelector('#exitBtn') 
 const helloElement = document.querySelector('#hello')
+const boardsList = document.querySelector('#boardsContainer')
 
 //Verifica se tem algum token
-
 if(localStorage.getItem('token')){
   revealMain();
+  getBoards()
 }
 
 
@@ -122,10 +124,15 @@ exitBtn.addEventListener('click',()=>hideMain())
     document.querySelector('#loginPassword').value = ''
     helloElement.innerText = ""
     localStorage.clear()
+    empityBoardsList()
     }
 
 
-
+    function empityBoardsList(){
+      while(boardsList.firstChild){
+        boardsList.removeChild(boardsList.firstChild)
+      }
+    }
 
 
 
