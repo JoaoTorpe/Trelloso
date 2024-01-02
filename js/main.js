@@ -11,14 +11,21 @@ const loginFormContainer = document.querySelector('#loginContainer')
 //Envio do form de registro
 registerForm.addEventListener("submit", (e) => {
     e.preventDefault()
-    console.log("Evento de envio do formulário disparado!");
     let newUser = {
         name: document.getElementById("registerName").value ,
         username: document.getElementById("registerUserName").value ,
         avatar_url: document.getElementById("registerAvatar").value,
         password: document.getElementById("registerPassword").value  
     }
+
+    if(document.querySelector('#passwordValidator').value === newUser.password){
     registerUser(newUser)
+    alert("Usuario cadastrado!")
+      revealLogin()
+  }
+    else{
+      alert("Senhas diferentes")
+    }
 })
 
 
@@ -42,31 +49,25 @@ view.addEventListener("click",()=>{
 
 })
 
-loginOp.addEventListener('click',()=>{
-registerFormContainer.classList.remove('displayFlex')
-registerFormContainer.classList.add('displayNone')
-
-loginFormContainer.classList.remove('displayNone')
-loginFormContainer.classList.add('displayFlex')
 
 
-loginOp.classList.add('displayNone')
-registerOp.classList.remove('displayNone')
-})
+loginOp.addEventListener('click',()=>revealLogin())
+registerOp.addEventListener('click',()=> revealRegister())
 
-loginOp.addEventListener('click',()=>{
-  registerFormContainer.classList.remove('displayFlex')
-  registerFormContainer.classList.add('displayNone')
-  
-  loginFormContainer.classList.remove('displayNone')
-  loginFormContainer.classList.add('displayFlex')
-  
-  
-  loginOp.classList.add('displayNone')
-  registerOp.classList.remove('displayNone')
-  })
 
-  registerOp.addEventListener('click',()=>{
+//Alternar entre os forms
+  function revealLogin(){
+    registerFormContainer.classList.remove('displayFlex')
+    registerFormContainer.classList.add('displayNone')
+    
+    loginFormContainer.classList.remove('displayNone')
+    loginFormContainer.classList.add('displayFlex')
+    
+    
+    loginOp.classList.add('displayNone')
+    registerOp.classList.remove('displayNone')
+  }
+  function revealRegister(){
     loginFormContainer.classList.remove('displayFlex')
     loginFormContainer.classList.add('displayNone')
     
@@ -76,7 +77,11 @@ loginOp.addEventListener('click',()=>{
     
     registerOp.classList.add('displayNone')
     loginOp.classList.remove('displayNone')
-    })
+    }
+
+
+    
+ 
 
 
 
