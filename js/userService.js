@@ -21,13 +21,13 @@ async function registerUser(data) {
   }
 
 
-  async function getCurrentUser(token) {
+  async function getCurrentUser() {
     try {
         const response = await fetch("http://localhost:8087/api/v1/users/me", {
           method: "GET",
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': "Bearer " + token,
+            'Authorization': "Bearer " + localStorage.getItem('token'),
           },
           
         });

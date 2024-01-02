@@ -1,18 +1,18 @@
 //buscando boards do usuario
 let boards = []
 
-async function getBoards(token) {
+async function getBoards() {
     try {
         const response = await fetch("http://localhost:8087/api/v1/users/me/boards", {
           method: "GET",
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': "Bearer " + token,
+            'Authorization': "Bearer " + localStorage.getItem('token'),
           },
           
         });
            boards = await response.json()
-             
+             console.log(boards)
            
       
       } 
