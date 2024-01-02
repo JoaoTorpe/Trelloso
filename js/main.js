@@ -11,6 +11,13 @@ const main = document.querySelector('main')
 const exitBtn = document.querySelector('#exitBtn') 
 const helloElement = document.querySelector('#hello')
 
+//Verifica se tem algum token
+
+if(localStorage.getItem('token')){
+  revealMain();
+}
+
+
 //Envio do form de registro
 registerForm.addEventListener("submit", (e) => {
     e.preventDefault()
@@ -101,7 +108,6 @@ exitBtn.addEventListener('click',()=>hideMain())
     loginOp.classList.add('displayNone')
     registerOp.classList.add('displayNone')
     exitBtn.classList.remove('displayNone')
-    helloElement.innerText = "Ola, "+localStorage.getItem('name')
     hello.classList.remove('displayNone')
 
     }

@@ -87,7 +87,9 @@
     padding: 10px;
     border-radius: 5px;
   }
-
+ main{
+    height: 100vh;
+  }
   .displayNone{
     display: none;
   }
@@ -95,7 +97,4 @@
     display: flex;
   }
 
-  main{
-    border: solid red;
-    height: 100vh;
-  }
+ 
