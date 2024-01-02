@@ -9,6 +9,7 @@ const registerFormContainer = document.querySelector('#registerContainer')
 const loginFormContainer = document.querySelector('#loginContainer')
 const main = document.querySelector('main')
 const exitBtn = document.querySelector('#exitBtn') 
+const helloElement = document.querySelector('#hello')
 
 //Envio do form de registro
 registerForm.addEventListener("submit", (e) => {
@@ -89,7 +90,7 @@ exitBtn.addEventListener('click',()=>hideMain())
     loginOp.classList.remove('displayNone')
     }
 
-
+   
     //Mostrar pagina do usuario logado
    export function revealMain(){
     main.classList.remove('displayNone')
@@ -100,15 +101,21 @@ exitBtn.addEventListener('click',()=>hideMain())
     loginOp.classList.add('displayNone')
     registerOp.classList.add('displayNone')
     exitBtn.classList.remove('displayNone')
+    helloElement.innerText = "Ola, "+localStorage.getItem('name')
+    hello.classList.remove('displayNone')
+
     }
     
     function hideMain(){
+      main.classList.add('displayNone')
     loginFormContainer.classList.remove('displayNone')
     loginFormContainer.classList.add('displayFlex')
     registerOp.classList.remove('displayNone')
     exitBtn.classList.add('displayNone')
     document.querySelector('#loginUserName').value = ''
     document.querySelector('#loginPassword').value = ''
+    helloElement.innerText = ""
+    localStorage.clear()
     }
 
 
