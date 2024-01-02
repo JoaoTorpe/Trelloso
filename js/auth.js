@@ -1,6 +1,6 @@
 import { getCurrentUser } from "./userService.js";
 import { revealMain } from "./main.js";
-import { getBoards } from "./boardsService.js";
+import { generateBoards, getBoards } from "./boardsService.js";
 //autentica usuario e armazena token
 export  default async function login(data){
  

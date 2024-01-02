@@ -89,12 +89,45 @@
   }
  main{
     height: 100vh;
+    display: flex;
+    justify-content: center;
   }
+  
+  .board{
+    position: relative;
+    margin-top: 0;
+    width: 200px;
+    height:100px;
+    overflow-wrap: break-word;
+    border-radius: 5px;
+  }
+  .board span{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+  }
+  #boardsContainer{
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    width: 60vw;
+  }
+  #boardsContainer li{
+    list-style: none;
+  }
+  #boardsContainer li:hover{
+    cursor: pointer;
+  }
+
+
   .displayNone{
     display: none;
   }
   .displayFlex{
     display: flex;
   }
+
+
 
  
