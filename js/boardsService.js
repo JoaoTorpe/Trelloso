@@ -1,4 +1,5 @@
 //buscando boards do usuario
+import { empityBoardsList } from "./main.js";
 let boards = []
 
 async function getBoards() {
@@ -28,7 +29,7 @@ async function getBoards() {
         li.innerHTML =`
         <div style="background-color: ${b.color};" class="board" name="${b.id} favorito="${b.favorito}">
             <h3>${b.name}</h3>
-            <span>⭐</span>
+            ${b.favorito ? '<span>⭐</span>' : ''}
             </div>`
             document.querySelector('#boardsContainer').appendChild(li)
     })
@@ -38,10 +39,31 @@ async function getBoards() {
     }
   }
 
-  function createBoard(){
+  async function createBoard(data){
+    while (boards.length > 0) {
+      boards.pop();
+  }
+empityBoardsList()
+    try {
+      const response = await fetch("http://localhost:8087/api/v1/boards/", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': "Bearer " + localStorage.getItem('token'),
+        },
+        body: JSON.stringify(data)
+      });
+
+     
+      getBoards()
+         
     
+    } 
+    catch (error) {
+      console.error("Error:", error);
+    }
   }
 
  
 
-  export {getBoards,generateBoards}
+  export {getBoards,generateBoards,createBoard}

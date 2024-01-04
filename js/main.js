@@ -2,6 +2,7 @@ import login from "./auth.js"
 import { registerUser } from "./userService.js"
 import { getBoards} from "./boardsService.js"
 import { getCurrentUser } from "./userService.js"
+import { createBoard } from "./boardsService.js"
 const registerForm = document.querySelector("#registerForm")
 const loginForm = document.querySelector('#loginForm')
 const view = document.querySelector("#view")
@@ -87,6 +88,27 @@ closeAddBoardForm.addEventListener('click',()=>{
   addBoardForm.classList.remove('displayFlex')
 })
 
+addBoardForm.addEventListener('submit',(e)=>{
+e.preventDefault()
+
+let newBoardData = new FormData(addBoardForm)
+
+
+let objetoDeDados = {};
+
+
+for (let [chave, valor] of newBoardData.entries()) {
+  objetoDeDados[chave] = valor;
+}
+if( objetoDeDados['favorito']){
+  objetoDeDados['favorito'] = true
+}else{
+  objetoDeDados['favorito'] = false
+}
+createBoard(objetoDeDados)
+
+})
+
 //Alternar entre os forms
   function revealLogin(){
     registerFormContainer.classList.remove('displayFlex')
@@ -143,7 +165,7 @@ closeAddBoardForm.addEventListener('click',()=>{
     }
 
 
-    function empityBoardsList(){
+    export function empityBoardsList(){
       while(boardsList.firstChild){
         boardsList.removeChild(boardsList.firstChild)
       }
