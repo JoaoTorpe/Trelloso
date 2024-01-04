@@ -1,4 +1,5 @@
-const helloElement = document.querySelector('#hello')
+const helloElement = document.querySelector('#helloP')
+const avatar = document.querySelector('#hello img')
 //Registra usuario
 async function registerUser(data) {
     try {
@@ -37,6 +38,8 @@ async function registerUser(data) {
         localStorage.setItem("name",currentUserData.name)
         localStorage.setItem("avatarURL",currentUserData.avatar_url)
         helloElement.innerText = "Ola, "+localStorage.getItem('name')
+        avatar.src = localStorage.getItem('avatarURL')
+        
       } 
       catch (error) {
         console.error("Error:", error);

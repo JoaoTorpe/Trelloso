@@ -14,9 +14,11 @@ export  default async function login(data){
         const token = await response.json();
         if(token.access_token){
             localStorage.setItem('token', token.access_token)
-            getCurrentUser()
+            
             getBoards()
             revealMain()
+            getCurrentUser()
+           
         }
   
       } 

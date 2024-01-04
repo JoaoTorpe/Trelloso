@@ -1,6 +1,7 @@
 import login from "./auth.js"
 import { registerUser } from "./userService.js"
 import { getBoards} from "./boardsService.js"
+import { getCurrentUser } from "./userService.js"
 const registerForm = document.querySelector("#registerForm")
 const loginForm = document.querySelector('#loginForm')
 const view = document.querySelector("#view")
@@ -10,13 +11,14 @@ const registerFormContainer = document.querySelector('#registerContainer')
 const loginFormContainer = document.querySelector('#loginContainer')
 const main = document.querySelector('main')
 const exitBtn = document.querySelector('#exitBtn') 
-const helloElement = document.querySelector('#hello')
+const helloContainer = document.querySelector('#hello')
 const boardsList = document.querySelector('#boardsContainer')
 
 //Verifica se tem algum token
 if(localStorage.getItem('token')){
   revealMain();
   getBoards()
+  getCurrentUser()
 }
 
 
@@ -110,7 +112,8 @@ exitBtn.addEventListener('click',()=>hideMain())
     loginOp.classList.add('displayNone')
     registerOp.classList.add('displayNone')
     exitBtn.classList.remove('displayNone')
-    hello.classList.remove('displayNone')
+    helloContainer.classList.remove('displayNone')
+    helloContainer.classList.add('displayFlex')
 
     }
     
@@ -119,10 +122,12 @@ exitBtn.addEventListener('click',()=>hideMain())
     loginFormContainer.classList.remove('displayNone')
     loginFormContainer.classList.add('displayFlex')
     registerOp.classList.remove('displayNone')
+    helloContainer.classList.remove('displayFlex')
+    helloContainer.classList.add('displayNone')
     exitBtn.classList.add('displayNone')
     document.querySelector('#loginUserName').value = ''
     document.querySelector('#loginPassword').value = ''
-    helloElement.innerText = ""
+    
     localStorage.clear()
     empityBoardsList()
     }
