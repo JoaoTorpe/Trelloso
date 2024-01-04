@@ -27,7 +27,7 @@ async function getBoards() {
 
         let li = document.createElement('li')
         li.innerHTML =`
-        <div style="background-color: ${b.color};" class="board" name="${b.id} favorito="${b.favorito}">
+        <div class="board" style="background-color: ${b.color}; color:white;" class="board" name="${b.id} favorito="${b.favorito}">
             <h3>${b.name}</h3>
             ${b.favorito ? '<span>⭐</span>' : ''}
             </div>`

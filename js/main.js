@@ -86,16 +86,14 @@ openAddBoardForm.addEventListener('click',()=>{
 closeAddBoardForm.addEventListener('click',()=>{
   addBoardForm.classList.add('displayNone')
   addBoardForm.classList.remove('displayFlex')
+  document.querySelector('#newBoardName').value = ''
 })
 
 addBoardForm.addEventListener('submit',(e)=>{
 e.preventDefault()
 
 let newBoardData = new FormData(addBoardForm)
-
-
 let objetoDeDados = {};
-
 
 for (let [chave, valor] of newBoardData.entries()) {
   objetoDeDados[chave] = valor;
@@ -106,6 +104,10 @@ if( objetoDeDados['favorito']){
   objetoDeDados['favorito'] = false
 }
 createBoard(objetoDeDados)
+
+document.querySelector('#newBoardName').value = ''
+addBoardForm.classList.add('displayNone')
+addBoardForm.classList.remove('displayFlex')
 
 })
 
