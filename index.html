@@ -55,12 +55,23 @@
 
 
 <main class="displayNone" >
-
     <ul id="boardsContainer" >
-
-   
-
    </ul>
+
+   <button id="addBoard"  class="headerBtn">+</button>
+
+   <form id="addBoardForm">
+    <input id="newBoardName" type="text" name="name" placeholder="Titulo">
+    <div style="display: flex; align-items: center; gap: 5px;" >
+    <input id="newBoardColor" type="color" name="color" >
+    <label for="color">Escolha a cor</label>
+</div>
+    <div>
+    <input id="newBoardFav" type="checkbox" name="favorite">
+    <label for="favorite">Favorito</label>
+</div>
+    <input id="submitNewBoard" type="submit"  class="headerBtn" value="Adicionar">
+   </form>
    
 </div>
 

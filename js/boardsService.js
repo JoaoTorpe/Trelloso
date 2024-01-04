@@ -38,6 +38,10 @@ async function getBoards() {
     }
   }
 
+  function createBoard(){
+    
+  }
+
  
 
   export {getBoards,generateBoards}
