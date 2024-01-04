@@ -13,6 +13,9 @@ const main = document.querySelector('main')
 const exitBtn = document.querySelector('#exitBtn') 
 const helloContainer = document.querySelector('#hello')
 const boardsList = document.querySelector('#boardsContainer')
+const openAddBoardForm = document.querySelector('#addBoard')
+const closeAddBoardForm = document.querySelector('#closeAddForm')
+const addBoardForm = document.querySelector('#addBoardForm')
 
 //Verifica se tem algum token
 if(localStorage.getItem('token')){
@@ -75,7 +78,14 @@ view.addEventListener("click",()=>{
 loginOp.addEventListener('click',()=>revealLogin())
 registerOp.addEventListener('click',()=> revealRegister())
 exitBtn.addEventListener('click',()=>hideMain())
-
+openAddBoardForm.addEventListener('click',()=>{
+  addBoardForm.classList.remove('displayNone')
+  addBoardForm.classList.add('displayFlex')
+})
+closeAddBoardForm.addEventListener('click',()=>{
+  addBoardForm.classList.add('displayNone')
+  addBoardForm.classList.remove('displayFlex')
+})
 
 //Alternar entre os forms
   function revealLogin(){
