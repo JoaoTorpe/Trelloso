@@ -75,6 +75,8 @@ view.addEventListener("click",()=>{
 })
 
 
+
+
 //Eventos
 loginOp.addEventListener('click',()=>revealLogin())
 registerOp.addEventListener('click',()=> revealRegister())
@@ -148,7 +150,7 @@ addBoardForm.classList.remove('displayFlex')
     exitBtn.classList.remove('displayNone')
     helloContainer.classList.remove('displayNone')
     helloContainer.classList.add('displayFlex')
-
+    
     }
     
     function hideMain(){
@@ -166,12 +168,35 @@ addBoardForm.classList.remove('displayFlex')
     empityBoardsList()
     }
 
-
     export function empityBoardsList(){
       while(boardsList.firstChild){
         boardsList.removeChild(boardsList.firstChild)
       }
     }
+
+//Lidando com a seleção de um board
+    const displayContainer = document.querySelector('#boardDisplay')
+
+   const displayName = document.querySelector('#displayName')
+   const displayStar = document.querySelector('#displayFav')
+
+   const displayTrash = document.querySelector('#displayDelete')
+   const displayClose = document.querySelector('#displayClose')
+    export function handleBoardSelection(e){
+        
+        localStorage.setItem('currentBoardId',e.target.getAttribute('name'))
+        displayName.value = e.target.querySelector('h3').innerText
+        displayContainer.classList.remove('displayNone')
+    }
+
+    displayClose.addEventListener('click',()=>{
+      localStorage.removeItem('currentBoardId')
+      displayContainer.classList.add('displayNone')
+      displayName.value = ''
+    })
+
+
+    
 
 
 

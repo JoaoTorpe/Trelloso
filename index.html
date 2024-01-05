@@ -64,7 +64,12 @@
     <button id="closeAddForm" type="button" >X</button>
     <input id="newBoardName" type="text" name="name" placeholder="Titulo">
     <div style="display: flex; align-items: center; gap: 5px;" >
-    <input id="newBoardColor" type="color" name="color" >
+    <input id="newBoardColor"  list="presets" type="color" name="color" >
+    <datalist id="presets">
+        <option value="#454B4D">Grey</option>
+        <option value="#258D4D">White</option>
+        <option value="#6699cc">Blue</option>
+      </datalist>
     <label for="color">Escolha a cor</label>
 </div>
     <div>
@@ -74,12 +79,18 @@
     <input id="submitNewBoard" type="submit"  class="headerBtn" value="Adicionar">
    </form>
    
+   <div id="boardDisplay" class="displayNone">
+    <div id="displayHeader" >
+    <button id="displayClose" >X</button>
+        <div id="infos" >
+            <input id="displayName" style="color: white; background-color: #496b7a; border: none; " type="text" value="" >
+
+        <span style="color: white; cursor: pointer; font-size: 20px;" id="displayFav" >✩</span>
+        <span style="cursor: pointer;" id="displayDelete" >🗑️</span>
+        </div>
 </div>
+   </div>
 
-
-
-
-</div>
 
 </main>
 

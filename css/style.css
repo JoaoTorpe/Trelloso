@@ -177,6 +177,43 @@
     cursor: pointer;
   }
 
+  #boardDisplay{
+    background-color: #5d879b;
+    top: 80px;
+    position: absolute;
+    border-radius: 10px;
+    width: 1000px;
+    height: 500px;
+  }
+  #displayClose{
+    color: white;
+    background-color: var(--blue);
+    border: none;
+    border-radius: 5px;
+    height: 20px;
+    width: 20px;
+    align-self: flex-start;
+    cursor: pointer;
+  }
+
+  #displayHeader{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  height: 60px;
+  background-color: #496b7a;
+    
+  }
+
+  #infos{
+    justify-content: space-around;
+    display: flex;
+    width: 200px;
+    align-items: center;
+  
+    
+  }
+
   .displayNone{
     display: none;
   }

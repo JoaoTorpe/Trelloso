@@ -1,5 +1,6 @@
 //buscando boards do usuario
 import { empityBoardsList } from "./main.js";
+import { handleBoardSelection } from "./main.js";
 let boards = []
 
 async function getBoards() {
@@ -27,7 +28,7 @@ async function getBoards() {
 
         let li = document.createElement('li')
         li.innerHTML =`
-        <div class="board" style="background-color: ${b.color}; color:white;" class="board" name="${b.id} favorito="${b.favorito}">
+        <div class="board" style="background-color: ${b.color}; color:white;" class="board" name="${b.id}" favorito="${b.favorito}">
             <h3>${b.name}</h3>
             ${b.favorito ? '<span>⭐</span>' : ''}
             </div>`
@@ -37,8 +38,18 @@ async function getBoards() {
     while (boards.length > 0) {
         boards.pop();
     }
+
+    document.querySelectorAll('.board').forEach(b=>{
+      b.addEventListener('click',(e)=>{
+
+        handleBoardSelection(e)
+
+        
+      })
+    })
   }
 
+  
   async function createBoard(data){
     while (boards.length > 0) {
       boards.pop();
