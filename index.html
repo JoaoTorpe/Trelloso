@@ -62,13 +62,14 @@
 
    <form id="addBoardForm" class="displayNone">
     <button id="closeAddForm" type="button" >X</button>
-    <input id="newBoardName" type="text" name="name" placeholder="Titulo">
+    <input autocomplete="off" id="newBoardName" type="text" name="name" placeholder="Titulo">
     <div style="display: flex; align-items: center; gap: 5px;" >
     <input id="newBoardColor"  list="presets" type="color" name="color" >
     <datalist id="presets">
         <option value="#454B4D">Grey</option>
         <option value="#258D4D">White</option>
         <option value="#6699cc">Blue</option>
+        <option value="#ae4d7b">Pink</option>
       </datalist>
     <label for="color">Escolha a cor</label>
 </div>
@@ -100,17 +101,10 @@
         <div id="lists">
             
             <div id="listsContainer" >
-
-            <ul class="listByItself" listId = "" >
-                <h3>Minha lista</h3>
-                <li class="card" >card 1</li>
-                <li class="card" >card 1</li>
-                <li class="card" >card 1</li>
-            </ul>
            
         </div>
 
-        <div style="padding-right: 10000px;" >dad</div>
+        <div style="padding-right: 10000px;" ></div>
 
           
         </div>

@@ -5,6 +5,7 @@ import { getCurrentUser } from "./userService.js"
 import { createBoard } from "./boardsService.js"
 import { createList } from "./listsServices.js"
 import { getLists } from "./listsServices.js"
+import { createCard } from "../cardService.js"
 
 
 const registerForm = document.querySelector("#registerForm")
@@ -221,6 +222,7 @@ addBoardForm.classList.remove('displayFlex')
         getLists()
     })
 
+//Limpa a lista
     export function clearListDisplay(){
     let cont=  document.querySelector('#listsContainer')
 
