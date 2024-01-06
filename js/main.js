@@ -3,6 +3,9 @@ import { registerUser } from "./userService.js"
 import { getBoards} from "./boardsService.js"
 import { getCurrentUser } from "./userService.js"
 import { createBoard } from "./boardsService.js"
+import { createList } from "./listsServices.js"
+
+
 const registerForm = document.querySelector("#registerForm")
 const loginForm = document.querySelector('#loginForm')
 const view = document.querySelector("#view")
@@ -17,6 +20,7 @@ const boardsList = document.querySelector('#boardsContainer')
 const openAddBoardForm = document.querySelector('#addBoard')
 const closeAddBoardForm = document.querySelector('#closeAddForm')
 const addBoardForm = document.querySelector('#addBoardForm')
+const addListForm = document.querySelector('#listForm')
 
 //Verifica se tem algum token
 if(localStorage.getItem('token')){
@@ -193,7 +197,26 @@ addBoardForm.classList.remove('displayFlex')
       localStorage.removeItem('currentBoardId')
       displayContainer.classList.add('displayNone')
       displayName.value = ''
+      document.querySelector('#listName').value =''
     })
+
+
+    //criando lista
+    
+    addListForm.addEventListener('submit',(e)=>{
+      e.preventDefault()
+      let data = 
+        {
+          "name": document.querySelector('#listName').value,
+          "board_id": localStorage.getItem('currentBoardId'),
+          "position": 0
+        }
+
+        createList(data)
+      
+
+    })
+
 
 
     

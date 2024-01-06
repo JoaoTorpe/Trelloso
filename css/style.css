@@ -210,9 +210,32 @@
     display: flex;
     width: 200px;
     align-items: center;
-  
-    
   }
+
+  #listsDisplay{
+    height: 80%;
+  }
+
+  #addList{
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+   text-align: center;
+  }
+
+  #listForm{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+  }
+
+  #listsContainer{
+    border:solid red;
+    height: 100%;
+    margin-top: 10px;
+  }
+
 
   .displayNone{
     display: none;
