@@ -93,12 +93,26 @@
     <div id="listsDisplay">
        
         <form id="listForm">
-            <input id="listName" type="text"  placeholder="Nome da nova lista" >
-            <input  id="addList" type="submit" class="headerBtn" value="+">
+            <input autocomplete="off"  id="listName" type="text"  placeholder="Nome da nova lista" >
+            <input id="addList" type="submit" class="headerBtn" value="+">
         </form>
 
-        <div id="listsContainer">
+        <div id="lists">
             
+            <div id="listsContainer" >
+
+            <ul class="listByItself" listId = "" >
+                <h3>Minha lista</h3>
+                <li class="card" >card 1</li>
+                <li class="card" >card 1</li>
+                <li class="card" >card 1</li>
+            </ul>
+           
+        </div>
+
+        <div style="padding-right: 10000px;" >dad</div>
+
+          
         </div>
 
     </div>

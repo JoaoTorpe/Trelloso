@@ -231,9 +231,37 @@
   }
 
   #listsContainer{
-    border:solid red;
+    display: flex;
+    gap: 20px;
     height: 100%;
     margin-top: 10px;
+    
+  }
+
+  #lists{
+    height: 90%;
+    overflow: scroll;
+  }
+
+  .listByItself{
+    list-style: none;
+    background-color: #101204;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    padding-top: 10px;
+    width: 200px;
+    height: 200px;
+
+  }
+  .card{
+    color: white;
+    width: 80%;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #22272B;
   }
 
 

@@ -14,7 +14,7 @@ async function getBoards() {
           
         });
            boards = await response.json()
-             console.log(boards)
+             
              generateBoards()
       
       } 

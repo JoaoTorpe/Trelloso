@@ -4,6 +4,7 @@ import { getBoards} from "./boardsService.js"
 import { getCurrentUser } from "./userService.js"
 import { createBoard } from "./boardsService.js"
 import { createList } from "./listsServices.js"
+import { getLists } from "./listsServices.js"
 
 
 const registerForm = document.querySelector("#registerForm")
@@ -186,11 +187,14 @@ addBoardForm.classList.remove('displayFlex')
 
    const displayTrash = document.querySelector('#displayDelete')
    const displayClose = document.querySelector('#displayClose')
+
     export function handleBoardSelection(e){
         
         localStorage.setItem('currentBoardId',e.target.getAttribute('name'))
         displayName.value = e.target.querySelector('h3').innerText
+        getLists()
         displayContainer.classList.remove('displayNone')
+        
     }
 
     displayClose.addEventListener('click',()=>{
@@ -198,6 +202,7 @@ addBoardForm.classList.remove('displayFlex')
       displayContainer.classList.add('displayNone')
       displayName.value = ''
       document.querySelector('#listName').value =''
+      
     })
 
 
@@ -211,11 +216,19 @@ addBoardForm.classList.remove('displayFlex')
           "board_id": localStorage.getItem('currentBoardId'),
           "position": 0
         }
-
+        document.querySelector('#listName').value = ''
         createList(data)
-      
-
+        getLists()
     })
+
+    export function clearListDisplay(){
+    let cont=  document.querySelector('#listsContainer')
+
+      while(cont.firstChild){
+        cont.removeChild(cont.firstChild)
+      }
+
+    }
 
 
 
