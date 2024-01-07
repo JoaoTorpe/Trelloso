@@ -1,11 +1,11 @@
 import login from "./auth.js"
 import { registerUser } from "./userService.js"
-import { getBoards} from "./boardsService.js"
+import { getBoards, updateBoardName} from "./boardsService.js"
 import { getCurrentUser } from "./userService.js"
 import { createBoard } from "./boardsService.js"
 import { createList } from "./listsServices.js"
 import { getLists } from "./listsServices.js"
-import { createCard } from "../cardService.js"
+
 
 
 const registerForm = document.querySelector("#registerForm")
@@ -203,7 +203,15 @@ addBoardForm.classList.remove('displayFlex')
       displayContainer.classList.add('displayNone')
       displayName.value = ''
       document.querySelector('#listName').value =''
-      
+      getBoards()
+    })
+
+    displayName.addEventListener("change",()=>{
+
+        let newName ={
+          "name":displayName.value
+        }
+        updateBoardName(newName)
     })
 
 

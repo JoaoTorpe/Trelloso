@@ -13,6 +13,10 @@ async function getBoards() {
           },
           
         });
+        while (boards.length > 0) {
+          boards.pop();
+      }
+
            boards = await response.json()
              
              generateBoards()
@@ -24,6 +28,7 @@ async function getBoards() {
   }
 
   function generateBoards(){
+    empityBoardsList()
     boards.forEach((b)=>{
 
         let li = document.createElement('li')
@@ -35,26 +40,43 @@ async function getBoards() {
             document.querySelector('#boardsContainer').appendChild(li)
     })
     
-    while (boards.length > 0) {
-        boards.pop();
-    }
+    
 
     document.querySelectorAll('.board').forEach(b=>{
       b.addEventListener('click',(e)=>{
-
         handleBoardSelection(e)
-
         
       })
     })
   }
 
+  async function updateBoardName(newName){
+
+    try {
+      const response = await fetch("http://localhost:8087/api/v1/boards/"+localStorage.getItem("currentBoardId"), {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': "Bearer " + localStorage.getItem('token'),
+        },
+        body:JSON.stringify(newName),
+      });
+      
+      
+        
+    
+    } 
+    catch (error) {
+      console.error("Error:", error);
+    }
+
+  }
+
+  
+
   
   async function createBoard(data){
-    while (boards.length > 0) {
-      boards.pop();
-  }
-empityBoardsList()
+   
     try {
       const response = await fetch("http://localhost:8087/api/v1/boards/", {
         method: "POST",
@@ -77,4 +99,4 @@ empityBoardsList()
 
  
 
-  export {getBoards,generateBoards,createBoard}
+  export {getBoards,generateBoards,createBoard,updateBoardName}
