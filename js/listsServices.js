@@ -13,8 +13,7 @@ async function createList(data){
           },
           body:JSON.stringify(data),
         });
-        
-        const result = await response.json();
+      
             getLists()
       
       } 

@@ -227,7 +227,6 @@ addBoardForm.classList.remove('displayFlex')
         }
         document.querySelector('#listName').value = ''
         createList(data)
-        getLists()
     })
 
 //Limpa a lista
