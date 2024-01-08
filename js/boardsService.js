@@ -61,16 +61,34 @@ async function getBoards() {
         },
         body:JSON.stringify(newName),
       });
-      
-      
-        
-    
+
     } 
     catch (error) {
       console.error("Error:", error);
     }
 
   }
+
+  async function updateBoardFavorito(newFavorito){
+
+    try {
+      const response = await fetch("http://localhost:8087/api/v1/boards/"+localStorage.getItem("currentBoardId"), {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': "Bearer " + localStorage.getItem('token'),
+        },
+        body:JSON.stringify(newFavorito),
+      });
+
+    } 
+    catch (error) {
+      console.error("Error:", error);
+    }
+
+  }
+
+
 
   
 
@@ -99,4 +117,4 @@ async function getBoards() {
 
  
 
-  export {getBoards,generateBoards,createBoard,updateBoardName}
+  export {getBoards,generateBoards,createBoard,updateBoardName,updateBoardFavorito}

@@ -1,6 +1,6 @@
 import login from "./auth.js"
 import { registerUser } from "./userService.js"
-import { getBoards, updateBoardName} from "./boardsService.js"
+import { getBoards, updateBoardFavorito, updateBoardName} from "./boardsService.js"
 import { getCurrentUser } from "./userService.js"
 import { createBoard } from "./boardsService.js"
 import { createList } from "./listsServices.js"
@@ -189,10 +189,40 @@ addBoardForm.classList.remove('displayFlex')
    const displayTrash = document.querySelector('#displayDelete')
    const displayClose = document.querySelector('#displayClose')
 
+
+displayStar.addEventListener('click',(e)=>{
+
+   let currentFavBoo =  e.target.innerText === "⭐"
+
+  if(currentFavBoo){
+    displayStar.innerText = "✩"
+  }
+  else{
+    displayStar.innerText = "⭐"
+  }
+
+let newFav ={
+  "favorito": !currentFavBoo
+}
+
+   updateBoardFavorito(newFav)
+  getBoards()
+})
+
+
     export function handleBoardSelection(e){
         
         localStorage.setItem('currentBoardId',e.target.getAttribute('name'))
         displayName.value = e.target.querySelector('h3').innerText
+        
+     
+        if(e.target.getAttribute("favorito") === "true"){
+          displayStar.innerText = "⭐"
+        }
+        else{
+          displayStar.innerText = "✩"
+        }
+        
         getLists()
         displayContainer.classList.remove('displayNone')
         
