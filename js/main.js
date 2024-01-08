@@ -1,6 +1,6 @@
 import login from "./auth.js"
 import { registerUser } from "./userService.js"
-import { getBoards, updateBoardFavorito, updateBoardName} from "./boardsService.js"
+import { deleteCurrentBoard, getBoards, updateBoardFavorito, updateBoardName} from "./boardsService.js"
 import { getCurrentUser } from "./userService.js"
 import { createBoard } from "./boardsService.js"
 import { createList } from "./listsServices.js"
@@ -190,6 +190,17 @@ addBoardForm.classList.remove('displayFlex')
    const displayClose = document.querySelector('#displayClose')
 
 
+   //Deletar board
+
+   displayTrash.addEventListener("click",async ()=>{
+      if(window.confirm("seu board sera excluido: ")){
+    await  deleteCurrentBoard()
+     await closeBoard()
+      }
+
+   })
+
+
 displayStar.addEventListener('click',(e)=>{
 
    let currentFavBoo =  e.target.innerText === "⭐"
@@ -206,7 +217,7 @@ let newFav ={
 }
 
    updateBoardFavorito(newFav)
-  getBoards()
+   getBoards()
 })
 
 
@@ -229,11 +240,7 @@ let newFav ={
     }
 
     displayClose.addEventListener('click',()=>{
-      localStorage.removeItem('currentBoardId')
-      displayContainer.classList.add('displayNone')
-      displayName.value = ''
-      document.querySelector('#listName').value =''
-      getBoards()
+      closeBoard()
     })
 
     displayName.addEventListener("change",()=>{
@@ -243,6 +250,15 @@ let newFav ={
         }
         updateBoardName(newName)
     })
+
+
+    async function closeBoard(){
+      localStorage.removeItem('currentBoardId')
+      displayContainer.classList.add('displayNone')
+      displayName.value = ''
+      document.querySelector('#listName').value =''
+      await getBoards()
+    }
 
 
     //criando lista

@@ -62,7 +62,7 @@
 
    <form id="addBoardForm" class="displayNone">
     <button id="closeAddForm" type="button" >X</button>
-    <input autocomplete="off" id="newBoardName" type="text" name="name" placeholder="Titulo">
+    <input autocomplete="off" id="newBoardName" type="text" name="name" placeholder="Titulo" required >
     <div style="display: flex; align-items: center; gap: 5px;" >
     <input id="newBoardColor"  list="presets" type="color" name="color" >
     <datalist id="presets">
@@ -94,7 +94,7 @@
     <div id="listsDisplay">
        
         <form id="listForm">
-            <input autocomplete="off"  id="listName" type="text"  placeholder="Nome da nova lista" >
+            <input autocomplete="off"  id="listName" type="text"  placeholder="Nome da nova lista" required >
             <input id="addList" type="submit" class="headerBtn" value="+">
         </form>
 

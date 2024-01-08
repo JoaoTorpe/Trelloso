@@ -115,6 +115,27 @@ async function getBoards() {
     }
   }
 
+
+  async function deleteCurrentBoard(){
+
+
+    try {
+      const response = await fetch("http://localhost:8087/api/v1/boards/"+localStorage.getItem("currentBoardId"), {
+        method: "DELETE",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': "Bearer " + localStorage.getItem('token'),
+        },
+        
+      });
+
+    } 
+    catch (error) {
+      console.error("Error:", error);
+    }
+  }
+
+
  
 
-  export {getBoards,generateBoards,createBoard,updateBoardName,updateBoardFavorito}
+  export {getBoards,generateBoards,createBoard,updateBoardName,updateBoardFavorito,deleteCurrentBoard}
