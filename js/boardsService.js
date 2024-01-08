@@ -1,7 +1,7 @@
 //buscando boards do usuario
 import { empityBoardsList } from "./main.js";
 import { handleBoardSelection } from "./main.js";
-let boards = []
+
 
 async function getBoards() {
     try {
@@ -13,13 +13,12 @@ async function getBoards() {
           },
           
         });
-        while (boards.length > 0) {
-          boards.pop();
-      }
+       
+        let boards = []
 
            boards = await response.json()
              
-             generateBoards()
+             generateBoards(boards)
       
       } 
       catch (error) {
@@ -27,9 +26,9 @@ async function getBoards() {
       }
   }
 
-  function generateBoards(){
+  function generateBoards(board){
     empityBoardsList()
-    boards.forEach((b)=>{
+    board.forEach((b)=>{
 
         let li = document.createElement('li')
         li.innerHTML =`

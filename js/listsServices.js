@@ -1,7 +1,7 @@
 //Criando uma lista
 import { clearListDisplay } from "./main.js";
 import { createCard } from "../cardService.js";
-let lists = []
+
 async function createList(data){
 
     try {
@@ -35,23 +35,21 @@ async function getLists(){
           
         });
 
-        while(lists.length > 0){
-            lists.pop()
-        }
+        let lists = []
          clearListDisplay()   
         lists = await response.json();
-        generateLists()
+        generateLists(lists)
       } 
       catch (error) {
         console.error("Error:", error);
       }
 }
 
-    function generateLists(){
+    function generateLists(list){
 
 
         let container = document.querySelector('#listsContainer')
-        lists.forEach(l=>{
+        list.forEach(l=>{
             let div = document.createElement('div')
 
           div.innerHTML =  `<ul class="listByItself" id="${l.id}">
