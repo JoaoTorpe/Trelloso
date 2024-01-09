@@ -23,6 +23,8 @@ const openAddBoardForm = document.querySelector('#addBoard')
 const closeAddBoardForm = document.querySelector('#closeAddForm')
 const addBoardForm = document.querySelector('#addBoardForm')
 const addListForm = document.querySelector('#listForm')
+const cardDisplayClose = document.querySelector("#cardDisplayClose")
+const cardDisplay = document.querySelector("#cardDisplay")
 
 //Verifica se tem algum token
 if(localStorage.getItem('token')){
@@ -260,6 +262,11 @@ let newFav ={
       await getBoards()
     }
 
+    //Fechar a tela do card
+    cardDisplayClose.addEventListener('click',()=>{
+      localStorage.removeItem('currentCardId')
+      cardDisplay.classList.add('displayNone')
+})
 
     //criando lista
     
@@ -275,7 +282,7 @@ let newFav ={
         createList(data)
     })
 
-//Limpa a lista
+//Limpa a lista de listas
     export function clearListDisplay(){
     let cont=  document.querySelector('#listsContainer')
 

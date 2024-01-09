@@ -20,6 +20,34 @@ async function createCard(data){
 
 }
 
+async function getCard(id){
+  localStorage.setItem('currentCardId',id)
+  try {
+      const response = await fetch("http://localhost:8087/api/v1/cards/"+id, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': "Bearer " + localStorage.getItem('token'),
+        },
+      });
+      let currentCard
+      
+       currentCard = await response.json();
+       
+        let cardName = document.querySelector('#cardDisplayName')
+        cardName.value = currentCard.name
+
+        let tagsArray = currentCard.tags
 
 
-export {createCard}
+        
+    
+    } 
+    catch (error) {
+      console.error("Error:", error);
+    }
+
+}
+
+
+export {createCard,getCard}

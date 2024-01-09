@@ -1,6 +1,6 @@
 //Criando uma lista
 import { clearListDisplay } from "./main.js";
-import { createCard } from "../cardService.js";
+import { createCard, getCard } from "../cardService.js";
 
 async function createList(data){
 
@@ -54,7 +54,7 @@ async function getLists(){
 
           div.innerHTML =  `<ul class="listByItself" id="${l.id}">
       <h3>${l.name}</h3>
-      ${l.cards.map(card => `<li class="card">${card.name}</li>`).join('')}
+      ${l.cards.map(card => `<li id="${card.id}" class="card">${card.name}</li>`).join('')}
 
       <input  autocomplete="off"  class="newCardInput" placeholder="Adicionar novo card"  id="${l.id}" type="text">
     </ul>`;
@@ -62,11 +62,25 @@ async function getLists(){
         })
 
     
+        let cards = document.querySelectorAll('.card')
+
+        cards.forEach(c=>{
+          
+          c.addEventListener('click',async e=>{
+           await getCard(e.target.id)
+           document.querySelector("#cardDisplay").classList.remove('displayNone')
+
+          })
+
+        })
+
+
+
 
        let inputs = document.querySelectorAll('.newCardInput')
 
        inputs.forEach(i=>{
-        i.addEventListener('change',(e)=>{
+        i.addEventListener('change', async (e)=>{
             
         let cardData = 
         {
@@ -76,8 +90,8 @@ async function getLists(){
         "position": 0
         }
         
-           createCard(cardData)
-           getLists()
+          await createCard(cardData)
+          await getLists()
         })
        })
     }

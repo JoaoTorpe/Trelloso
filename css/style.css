@@ -177,6 +177,10 @@
     cursor: pointer;
   }
 
+  .card{
+    cursor: pointer;
+  }
+
   #boardDisplay{
     background-color: #5d879b;
     top: 80px;
@@ -265,6 +269,41 @@
     background-color: #22272B;
   }
 
+  #cardDisplay{
+    padding: 10px;
+    border: solid red;
+    background-color: #323940;
+    position: absolute;
+    height: 400px;
+    width: 900px;
+    top: 20px;
+    left: 60px;
+  }
+
+  #cardDiplayHeader{
+    display: flex;
+   
+    width: 80%;
+    justify-content: space-between;
+  }
+
+  #cardDisplayName{
+    background-color: #323940;
+  }
+
+  #cardDisplayClose{
+    color: white;
+    background-color: var(--blue);
+    border: none;
+    border-radius: 5px;
+    height: 20px;
+    width: 20px;
+    align-self: flex-start;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+  }
+
 
   .displayNone{
     display: none;
@@ -272,7 +311,9 @@
   .displayFlex{
     display: flex;
   }
-
+  .displayBlock{
+    display: block;
+  }
 
 
  
