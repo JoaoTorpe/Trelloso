@@ -1,3 +1,5 @@
+import { clearCommentsList } from "./js/main.js";
+
 async function createCard(data){
 
     try {
@@ -39,7 +41,7 @@ async function getCard(id){
 
         let tagsArray = currentCard.tags
         let commentsArray = currentCard.cardcomments
-
+        clearCommentsList()
         commentsArray.forEach(e => {
             let li = document.createElement('li')
           li.innerHTML = `
@@ -53,8 +55,32 @@ async function getCard(id){
     catch (error) {
       console.error("Error:", error);
     }
+}
+
+//Criando comentario
+async function createComment(comment){
+
+  try {
+      const response = await fetch("http://localhost:8087/api/v1/card_comments/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': "Bearer " + localStorage.getItem('token'),
+        },
+        body:JSON.stringify(comment),
+      });
+      
+     
+        getCard(localStorage.getItem('currentCardId'))
+    
+    } 
+    catch (error) {
+      console.error("Error:", error);
+    }
 
 }
 
 
-export {createCard,getCard}
+
+
+export {createCard,getCard,createComment}

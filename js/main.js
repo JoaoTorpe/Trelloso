@@ -5,6 +5,7 @@ import { getCurrentUser } from "./userService.js"
 import { createBoard } from "./boardsService.js"
 import { createList } from "./listsServices.js"
 import { getLists } from "./listsServices.js"
+import { createComment } from "../cardService.js"
 
 
 
@@ -26,6 +27,9 @@ const addListForm = document.querySelector('#listForm')
 const cardDisplayClose = document.querySelector("#cardDisplayClose")
 const cardDisplay = document.querySelector("#cardDisplay")
 const commentsList = document.querySelector('#commentsContainer')
+const commentForm = document.querySelector('#addCommentForm')
+
+
 //Verifica se tem algum token
 if(localStorage.getItem('token')){
   revealMain();
@@ -274,7 +278,7 @@ let newFav ={
     clearCommentsList()
   }
 
-    //criando lista
+    //criando uma lista
     
     addListForm.addEventListener('submit',(e)=>{
       e.preventDefault()
@@ -286,6 +290,21 @@ let newFav ={
         }
         document.querySelector('#listName').value = ''
         createList(data)
+    })
+
+
+    //Adicionando comentarios
+
+    commentForm.addEventListener('submit',async (e)=>{
+      e.preventDefault()
+     let comment = {
+        "comment": document.querySelector('#inputComment').value,
+        "card_id": localStorage.getItem('currentCardId')
+      }
+      if( comment.comment != ''  ){
+       await createComment(comment)
+      }
+      document.querySelector('#inputComment').value =''
     })
 
 //Limpa a lista de listas
@@ -300,7 +319,7 @@ let newFav ={
 
     //Limpando lista de comentarios
 
-    function clearCommentsList(){
+   export function clearCommentsList(){
         while(commentsList.firstChild){
           commentsList.removeChild(commentsList.firstChild)
         }
