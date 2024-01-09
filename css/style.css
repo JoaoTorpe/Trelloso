@@ -271,18 +271,24 @@
 
   #cardDisplay{
     padding: 10px;
-    border: solid red;
     background-color: #323940;
     position: absolute;
     height: 400px;
     width: 900px;
     top: 20px;
     left: 60px;
+    grid-template-areas: "header header header"
+                          "comments comments other"
+                          "comments comments other"
+    ;
+    grid-template-rows: 50px 1fr 30px;
+    grid-template-columns: 150px 1fr;
+    overflow: scroll;
   }
 
   #cardDiplayHeader{
     display: flex;
-   
+   grid-area: header;
     width: 80%;
     justify-content: space-between;
   }
@@ -302,6 +308,26 @@
     cursor: pointer;
     position: absolute;
     right: 5px;
+  }
+
+  #commentsList{
+    margin-top: 20px;
+    grid-area: comments;
+    width: 300px;
+  }
+
+  #commentsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .comment{
+    list-style: none;
+    color: white;
+    border: 1px solid gray;
+    padding: 10px;
+    border-radius: 10px;
   }
 
 

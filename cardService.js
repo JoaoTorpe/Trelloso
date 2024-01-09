@@ -38,8 +38,15 @@ async function getCard(id){
         cardName.value = currentCard.name
 
         let tagsArray = currentCard.tags
+        let commentsArray = currentCard.cardcomments
 
-
+        commentsArray.forEach(e => {
+            let li = document.createElement('li')
+          li.innerHTML = `
+          <li class="comment" id="${e.id}" >${e.comment}</li>
+          `
+            document.querySelector("#commentsContainer").appendChild(li)
+        });
         
     
     } 

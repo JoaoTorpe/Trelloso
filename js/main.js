@@ -25,7 +25,7 @@ const addBoardForm = document.querySelector('#addBoardForm')
 const addListForm = document.querySelector('#listForm')
 const cardDisplayClose = document.querySelector("#cardDisplayClose")
 const cardDisplay = document.querySelector("#cardDisplay")
-
+const commentsList = document.querySelector('#commentsContainer')
 //Verifica se tem algum token
 if(localStorage.getItem('token')){
   revealMain();
@@ -260,13 +260,19 @@ let newFav ={
       displayName.value = ''
       document.querySelector('#listName').value =''
       await getBoards()
+      closeCardDisplay()
     }
 
     //Fechar a tela do card
     cardDisplayClose.addEventListener('click',()=>{
-      localStorage.removeItem('currentCardId')
-      cardDisplay.classList.add('displayNone')
+      closeCardDisplay()
 })
+
+  function closeCardDisplay(){
+    localStorage.removeItem('currentCardId')
+    cardDisplay.classList.add('displayNone')
+    clearCommentsList()
+  }
 
     //criando lista
     
@@ -292,6 +298,13 @@ let newFav ={
 
     }
 
+    //Limpando lista de comentarios
+
+    function clearCommentsList(){
+        while(commentsList.firstChild){
+          commentsList.removeChild(commentsList.firstChild)
+        }
+    }
 
 
     
