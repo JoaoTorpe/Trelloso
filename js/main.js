@@ -5,7 +5,7 @@ import { getCurrentUser } from "./userService.js"
 import { createBoard } from "./boardsService.js"
 import { createList } from "./listsServices.js"
 import { getLists } from "./listsServices.js"
-import { addTag, createComment, removeTag } from "../cardService.js"
+import { addTag, createComment, removeTag, updateTagsInputs } from "../cardService.js"
 
 
 
@@ -29,6 +29,8 @@ const cardDisplay = document.querySelector("#cardDisplay")
 const commentsList = document.querySelector('#commentsContainer')
 const commentForm = document.querySelector('#addCommentForm')
 const tagsOp = document.querySelectorAll('#tagsMenu input')
+const tagsMenu = document.querySelector("#tagsMenu")
+let tagsInputs = document.querySelectorAll('#tagsMenu input')
 
 //Verifica se tem algum token
 if(localStorage.getItem('token')){
@@ -277,6 +279,8 @@ let newFav ={
     cardDisplay.classList.remove('displayGrid')
     cardDisplay.classList.add('displayNone')
     clearCommentsList()
+    clearTagsCheckBoxes()
+   
   }
 
     //criando uma lista
@@ -298,6 +302,10 @@ let newFav ={
 tagsOp.forEach(t=>{
   t.addEventListener('change',e=>handleTagOp(e.target))
 })
+
+
+
+
 
 
     function handleTagOp(op){
@@ -345,6 +353,15 @@ tagsOp.forEach(t=>{
       }
 
     }
+
+//limpa os checkboxes dos tagsinputs
+
+function clearTagsCheckBoxes(){
+  tagsInputs.forEach(i=>{
+    i.checked = false
+  })
+}
+
 
     //Limpando lista de comentarios
 

@@ -40,7 +40,7 @@ async function getCard(id){
         let cardName = document.querySelector('#cardDisplayName')
         cardName.value = currentCard.name
 
-        let tagsArray = currentCard.tags
+       
         let commentsArray = currentCard.cardcomments
         clearCommentsList()
         commentsArray.forEach(e => {
@@ -94,9 +94,7 @@ async function addTag(tag){
       },
       body:JSON.stringify(tag),
     });
-    
-   
-    
+     
   getLists()
   } 
   catch (error) {
@@ -128,9 +126,26 @@ async function removeTag(tag){
 }
 
 
+function updateTagsInputs(e){
+
+
+let target = e.target
+  let tagsArray = target.querySelectorAll('.tag')
+
+        for(let i=0;i<4;i++){
+
+          if(tagsArray[i]){
+            
+            document.getElementById(tagsArray[i].getAttribute('tagId')).checked = true
+          }
+        }
+
+}
 
 
 
 
 
-export {createCard,getCard,createComment,addTag,removeTag}
+
+
+export {createCard,getCard,createComment,addTag,removeTag,updateTagsInputs}

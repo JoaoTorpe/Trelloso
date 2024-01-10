@@ -1,6 +1,6 @@
 //Criando uma lista
 import { clearListDisplay } from "./main.js";
-import { createCard, getCard } from "../cardService.js";
+import { createCard, getCard, updateTagsInputs } from "../cardService.js";
 
 async function createList(data){
 
@@ -52,24 +52,26 @@ async function getLists(){
         list.forEach(l=>{
             let div = document.createElement('div')
 
-          div.innerHTML =  `<ul class="listByItself" id="${l.id}">
+          div.innerHTML =  `<ul class="listByItself" uLid="${l.id}">
       <h3>${l.name}</h3>
-      ${l.cards.map(card => `<li id="${card.id}" class="card">${card.name} <span class="cardTags">${card.tags.map(tag => `<span class="tag" style="background-color: ${tag.color};" ></span>`).join('')}</span> </li>`).join('')}
+      ${l.cards.map(card => `<li liId="${card.id}" class="card">${card.name} <span class="cardTags">${card.tags.map(tag => `<span class="tag" tagId="${tag.id}" style="background-color: ${tag.color};" ></span>`).join('')}</span> </li>`).join('')}
 
-      <input  autocomplete="off"  class="newCardInput" placeholder="Adicionar novo card"  id="${l.id}" type="text">
+      <input  autocomplete="off"  class="newCardInput" placeholder="Adicionar novo card"  inId="${l.id}" type="text">
     </ul>`;
             container.appendChild(div)
         })
 
+        
     
         let cards = document.querySelectorAll('.card')
 
         cards.forEach(c=>{
           
           c.addEventListener('click',async e=>{
-           await getCard(e.target.id)
+           await getCard(e.target.getAttribute('lIid'))
            document.querySelector("#cardDisplay").classList.remove('displayNone')
            document.querySelector("#cardDisplay").classList.add('displayGrid')
+           updateTagsInputs(e)
           })
 
         })
@@ -86,15 +88,16 @@ async function getLists(){
         {
         "name": e.target.value,
         "date":new Date().toISOString(),
-        "list_id": e.target.id,
+        "list_id": e.target.getAttribute('inId'),
         "position": 0
         }
-        
+  
           await createCard(cardData)
           await getLists()
         })
        })
     }
+
 
 
 export {createList,getLists}
