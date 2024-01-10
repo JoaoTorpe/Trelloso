@@ -54,7 +54,7 @@ async function getLists(){
 
           div.innerHTML =  `<ul class="listByItself" id="${l.id}">
       <h3>${l.name}</h3>
-      ${l.cards.map(card => `<li id="${card.id}" class="card">${card.name}</li>`).join('')}
+      ${l.cards.map(card => `<li id="${card.id}" class="card">${card.name} <span class="cardTags">${card.tags.map(tag => `<span class="tag" style="background-color: ${tag.color};" ></span>`).join('')}</span> </li>`).join('')}
 
       <input  autocomplete="off"  class="newCardInput" placeholder="Adicionar novo card"  id="${l.id}" type="text">
     </ul>`;
@@ -69,7 +69,7 @@ async function getLists(){
           c.addEventListener('click',async e=>{
            await getCard(e.target.id)
            document.querySelector("#cardDisplay").classList.remove('displayNone')
-
+           document.querySelector("#cardDisplay").classList.add('displayGrid')
           })
 
         })

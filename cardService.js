@@ -1,3 +1,4 @@
+import { getLists } from "./js/listsServices.js";
 import { clearCommentsList } from "./js/main.js";
 
 async function createCard(data){
@@ -80,7 +81,56 @@ async function createComment(comment){
 
 }
 
+//Lidando com tags
+
+async function addTag(tag){
+
+  try {
+    const response = await fetch("http://localhost:8087/api/v1/card_tags/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': "Bearer " + localStorage.getItem('token'),
+      },
+      body:JSON.stringify(tag),
+    });
+    
+   
+    
+  getLists()
+  } 
+  catch (error) {
+    console.error("Error:", error);
+  }
+
+}
+
+async function removeTag(tag){
+
+  try {
+    const response = await fetch("http://localhost:8087/api/v1/card_tags/"+tag.card_id+"/"+tag.tag_id, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': "Bearer " + localStorage.getItem('token'),
+      },
+     
+    });
+    
+    getLists()
+     
+  
+  } 
+  catch (error) {
+    console.error("Error:", error);
+  }
+
+}
 
 
 
-export {createCard,getCard,createComment}
+
+
+
+
+export {createCard,getCard,createComment,addTag,removeTag}
