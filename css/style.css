@@ -246,6 +246,7 @@
   }
 
   .listByItself{
+    position: relative;
     list-style: none;
     background-color: #101204;
     display: flex;
@@ -349,6 +350,12 @@ border: solid red;
 }
 
 #cardDisplayDelete{
+  cursor: pointer;
+}
+
+.deleteList{
+  position: absolute;
+  right: 5px;
   cursor: pointer;
 }
 

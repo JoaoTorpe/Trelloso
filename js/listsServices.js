@@ -53,6 +53,7 @@ async function getLists(){
             let div = document.createElement('div')
 
           div.innerHTML =  `<ul class="listByItself" uLid="${l.id}">
+          <span class="deleteList" >🗑️</span>
       <h3>${l.name}</h3>
       ${l.cards.map(card => `<li liId="${card.id}" class="card">${card.name} <span class="cardTags">${card.tags.map(tag => `<span class="tag" tagId="${tag.id}" style="background-color: ${tag.color};" ></span>`).join('')}</span> </li>`).join('')}
 
@@ -60,6 +61,18 @@ async function getLists(){
     </ul>`;
             container.appendChild(div)
         })
+
+       let listsDelete = document.querySelectorAll('.deleteList')
+
+       listsDelete.forEach(l=>{
+        l.addEventListener('click',(e)=>{
+          let id =e.target.parentNode.getAttribute('ulId')
+          let confirmation = window.confirm("Deseja deletar essa lista ?")
+          if(confirmation){
+          deleteList(id)
+          }
+        })
+       })
 
         
     
@@ -96,6 +109,28 @@ async function getLists(){
           await getLists()
         })
        })
+    }
+
+
+
+    async function deleteList(id){
+
+
+      try {
+        const response = await fetch("http://localhost:8087/api/v1/lists/"+id, {
+          method: "DELETE",
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem('token'),
+          },   
+        });
+    
+        getLists()
+    
+      } 
+      catch (error) {
+        console.error("Error:", error);
+      }
     }
 
 
