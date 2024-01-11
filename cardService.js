@@ -142,10 +142,30 @@ let target = e.target
 
 }
 
+async function deleteCard(){
+
+
+  try {
+    const response = await fetch("http://localhost:8087/api/v1/cards/"+localStorage.getItem("currentCardId"), {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem('token'),
+      },   
+    });
+
+    getLists()
+
+  } 
+  catch (error) {
+    console.error("Error:", error);
+  }
+}
 
 
 
 
 
 
-export {createCard,getCard,createComment,addTag,removeTag,updateTagsInputs}
+
+export {createCard,getCard,createComment,addTag,removeTag,updateTagsInputs,deleteCard}

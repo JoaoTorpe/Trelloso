@@ -348,6 +348,10 @@ border: solid red;
   height: 4px;
 }
 
+#cardDisplayDelete{
+  cursor: pointer;
+}
+
   .displayNone{
     display: none;
   }

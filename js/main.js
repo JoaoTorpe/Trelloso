@@ -5,7 +5,7 @@ import { getCurrentUser } from "./userService.js"
 import { createBoard } from "./boardsService.js"
 import { createList } from "./listsServices.js"
 import { getLists } from "./listsServices.js"
-import { addTag, createComment, removeTag, updateTagsInputs } from "../cardService.js"
+import { addTag, createComment, deleteCard, removeTag, updateTagsInputs } from "../cardService.js"
 
 
 
@@ -31,6 +31,7 @@ const commentForm = document.querySelector('#addCommentForm')
 const tagsOp = document.querySelectorAll('#tagsMenu input')
 const tagsMenu = document.querySelector("#tagsMenu")
 let tagsInputs = document.querySelectorAll('#tagsMenu input')
+const cardDelete = document.querySelector('#cardDisplayDelete')
 
 //Verifica se tem algum token
 if(localStorage.getItem('token')){
@@ -353,6 +354,19 @@ tagsOp.forEach(t=>{
       }
 
     }
+
+//Delete card
+cardDelete.addEventListener('click',()=>{
+    let confirmation = window.confirm("Deseja excluir esse card ?")
+
+    if(confirmation){
+      deleteCard()
+      closeCardDisplay()
+    }
+
+})
+
+
 
 //limpa os checkboxes dos tagsinputs
 
