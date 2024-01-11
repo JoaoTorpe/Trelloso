@@ -43,13 +43,28 @@ async function getCard(id){
        
         let commentsArray = currentCard.cardcomments
         clearCommentsList()
-        commentsArray.forEach(e => {
+        commentsArray.forEach(c => {
             let li = document.createElement('li')
           li.innerHTML = `
-          <li class="comment" id="${e.id}" >${e.comment}</li>
+            <div class="commentWrapper" >
+          <li class="comment" comId="${c.id}" >${c.comment}</li>
+          <span class="editComment">✏️</span>
+          <span class="deleteComment">🗑️</span>
+          </div>
           `
             document.querySelector("#commentsContainer").appendChild(li)
         });
+
+        //Adicinar eventos ao spans
+
+        let deletes = document.querySelectorAll('.deleteComment')
+
+        deletes.forEach(d=>{
+          d.addEventListener('click', e=>{
+            let  commentId = e.target.parentNode.querySelector('.comment').getAttribute('comId')
+                 deleteComment(commentId)
+          })
+        })
         
     
     } 
@@ -161,6 +176,28 @@ async function deleteCard(){
     console.error("Error:", error);
   }
 }
+
+async function deleteComment(id){
+
+
+  try {
+    const response = await fetch("http://localhost:8087/api/v1/card_comments/"+id, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem('token'),
+      },   
+    });
+
+   getCard(localStorage.getItem('currentCardId'))
+
+  } 
+  catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+
 
 
 
