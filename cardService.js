@@ -48,7 +48,6 @@ async function getCard(id){
           li.innerHTML = `
             <div class="commentWrapper" >
           <li class="comment" comId="${c.id}" >${c.comment}</li>
-          <span class="editComment">✏️</span>
           <span class="deleteComment">🗑️</span>
           </div>
           `
@@ -198,6 +197,26 @@ async function deleteComment(id){
 }
 
 
+async function updateCardListId(cardId,listId){
+
+  try {
+    const response = await fetch("http://localhost:8087/api/v1/cards/"+cardId, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': "Bearer " + localStorage.getItem('token'),
+      },
+      body:JSON.stringify(listId),
+    });
+
+    getLists()
+
+  } 
+  catch (error) {
+    console.error("Error:", error);
+  }
+
+}
 
 
 
@@ -205,4 +224,5 @@ async function deleteComment(id){
 
 
 
-export {createCard,getCard,createComment,addTag,removeTag,updateTagsInputs,deleteCard}
+
+export {createCard,getCard,createComment,addTag,removeTag,updateTagsInputs,deleteCard,updateCardListId}

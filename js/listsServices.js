@@ -1,6 +1,6 @@
 //Criando uma lista
 import { clearListDisplay } from "./main.js";
-import { createCard, getCard, updateTagsInputs } from "../cardService.js";
+import { createCard, getCard, updateCardListId, updateTagsInputs } from "../cardService.js";
 
 async function createList(data){
 
@@ -55,7 +55,7 @@ async function getLists(){
           div.innerHTML =  `<ul class="listByItself" uLid="${l.id}">
           <span class="deleteList" >🗑️</span>
       <h3>${l.name}</h3>
-      ${l.cards.map(card => `<li liId="${card.id}" class="card">${card.name} <span class="cardTags">${card.tags.map(tag => `<span class="tag" tagId="${tag.id}" style="background-color: ${tag.color};" ></span>`).join('')}</span> </li>`).join('')}
+      ${l.cards.map(card => `<li draggable="true" liId="${card.id}" class="card">${card.name} <span class="cardTags">${card.tags.map(tag => `<span class="tag" tagId="${tag.id}" style="background-color: ${tag.color};" ></span>`).join('')}</span> </li>`).join('')}
 
       <input  autocomplete="off"  class="newCardInput" placeholder="Adicionar novo card"  inId="${l.id}" type="text">
     </ul>`;
@@ -63,6 +63,7 @@ async function getLists(){
         })
 
        let listsDelete = document.querySelectorAll('.deleteList')
+       let lists = document.querySelectorAll('.listByItself') 
 
        listsDelete.forEach(l=>{
         l.addEventListener('click',(e)=>{
@@ -77,6 +78,7 @@ async function getLists(){
         
     
         let cards = document.querySelectorAll('.card')
+        let cardId = null
 
         cards.forEach(c=>{
           
@@ -87,7 +89,38 @@ async function getLists(){
            updateTagsInputs(e)
           })
 
+
+          c.addEventListener('dragstart',e=>{
+             cardId = e.target.getAttribute('liId')
+          })
+       
+
         })
+
+      
+
+        lists.forEach(l=>{
+          l.addEventListener('dragover',e=>{
+            e.preventDefault()
+          })
+
+          l.addEventListener('drop',e=>{
+            e.preventDefault()
+            if(e.target.classList.contains('listByItself')){
+
+            let listId = e.target.getAttribute('ulId')  
+            let listIdJson = {
+              "list_id": listId
+            }
+          updateCardListId(cardId,listIdJson)
+            }
+
+
+          })
+          
+        })
+
+        
 
 
 
