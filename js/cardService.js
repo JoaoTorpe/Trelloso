@@ -1,5 +1,5 @@
-import { getLists } from "./js/listsServices.js";
-import { clearCommentsList } from "./js/main.js";
+import { getLists } from "./listsServices.js";
+import { clearCommentsList } from "./main.js";
 
 async function createCard(data){
 

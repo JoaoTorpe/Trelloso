@@ -1,6 +1,6 @@
 //Criando uma lista
 import { clearListDisplay } from "./main.js";
-import { createCard, getCard, updateCardListId, updateTagsInputs } from "../cardService.js";
+import { createCard, getCard, updateCardListId, updateTagsInputs } from "./cardService.js";
 
 async function createList(data){
 

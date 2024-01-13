@@ -134,7 +134,36 @@ async function getBoards() {
     }
   }
 
+  async function getFavoritesBoards() {
+    try {
+        const response = await fetch("http://localhost:8087/api/v1/users/me/boards", {
+          method: "GET",
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem('token'),
+          },
+          
+        });
+       
+        let boards = []
+
+          let res = await response.json()
+          res.forEach(r=>{
+            if(r.favorito)
+            boards.push(r)
+
+          })
+             
+             generateBoards(boards)
+      
+      } 
+      catch (error) {
+        console.error("Error:", error);
+      }
+  }
+
+
 
  
 
-  export {getBoards,generateBoards,createBoard,updateBoardName,updateBoardFavorito,deleteCurrentBoard}
+  export {getBoards,generateBoards,createBoard,updateBoardName,updateBoardFavorito,deleteCurrentBoard,getFavoritesBoards}

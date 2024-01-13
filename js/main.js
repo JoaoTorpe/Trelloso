@@ -1,11 +1,11 @@
 import login from "./auth.js"
 import { registerUser } from "./userService.js"
-import { deleteCurrentBoard, getBoards, updateBoardFavorito, updateBoardName} from "./boardsService.js"
+import { deleteCurrentBoard, getBoards, getFavoritesBoards, updateBoardFavorito, updateBoardName} from "./boardsService.js"
 import { getCurrentUser } from "./userService.js"
 import { createBoard } from "./boardsService.js"
 import { createList } from "./listsServices.js"
 import { getLists } from "./listsServices.js"
-import { addTag, createComment, deleteCard, removeTag, updateTagsInputs } from "../cardService.js"
+import { addTag, createComment, deleteCard, removeTag, updateTagsInputs } from "./cardService.js"
 
 
 
@@ -32,6 +32,7 @@ const tagsOp = document.querySelectorAll('#tagsMenu input')
 const tagsMenu = document.querySelector("#tagsMenu")
 let tagsInputs = document.querySelectorAll('#tagsMenu input')
 const cardDelete = document.querySelector('#cardDisplayDelete')
+const favorites = document.querySelector('#showFavorites')
 
 //Verifica se tem algum token
 if(localStorage.getItem('token')){
@@ -375,6 +376,32 @@ function clearTagsCheckBoxes(){
     i.checked = false
   })
 }
+
+
+//monstrando favoritos
+
+favorites.addEventListener('click',e=>{
+  let btn = e.target 
+if(displayContainer.classList.contains('displayNone')){
+  if(btn.innerText === 'Favoritos'){
+ 
+    btn.innerText = 'Todos'
+    btn.style.color = 'black'
+    btn.style.backgroundColor = 'white'
+
+    getFavoritesBoards()
+}
+else{
+  btn.innerText = 'Favoritos'
+  btn.style.color = 'white'
+  btn.style.backgroundColor = '#22272B'
+  getBoards()
+}
+}
+
+
+
+})
 
 
     //Limpando lista de comentarios
