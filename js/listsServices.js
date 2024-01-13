@@ -38,6 +38,9 @@ async function getLists(){
         let lists = []
          clearListDisplay()   
         lists = await response.json();
+        lists.sort((a, b) => parseInt(a.id) - parseInt(b.id));
+
+        console.log(lists)
         generateLists(lists)
       } 
       catch (error) {
@@ -54,7 +57,8 @@ async function getLists(){
 
           div.innerHTML =  `<ul class="listByItself" uLid="${l.id}">
           <span class="deleteList" >🗑️</span>
-      <h3>${l.name}</h3>
+     
+      <input class = "listInputName" autocomplete="off" listInputId="${l.id}" type="text" value="${l.name}" >
       ${l.cards.map(card => `<li draggable="true" liId="${card.id}" class="card">${card.name} <span class="cardTags">${card.tags.map(tag => `<span class="tag" tagId="${tag.id}" style="background-color: ${tag.color};" ></span>`).join('')}</span> </li>`).join('')}
 
       <input  autocomplete="off"  class="newCardInput" placeholder="Adicionar novo card"  inId="${l.id}" type="text">
@@ -64,6 +68,7 @@ async function getLists(){
 
        let listsDelete = document.querySelectorAll('.deleteList')
        let lists = document.querySelectorAll('.listByItself') 
+       let listsInputs = document.querySelectorAll('.listInputName')
 
        listsDelete.forEach(l=>{
         l.addEventListener('click',(e)=>{
@@ -114,12 +119,23 @@ async function getLists(){
             }
           updateCardListId(cardId,listIdJson)
             }
-
-
           })
-          
         })
 
+        listsInputs.forEach(input=> {
+
+          input.addEventListener('change',e=>{
+            
+            let listId = e.target.getAttribute('listInputId')
+            let newName = {
+              "name":e.target.value
+            }
+
+            updateListName(newName,listId)
+          })
+
+
+        })
         
 
 
@@ -164,6 +180,27 @@ async function getLists(){
       catch (error) {
         console.error("Error:", error);
       }
+    }
+
+    async function updateListName(newName,listId){
+
+      try {
+        const response = await fetch("http://localhost:8087/api/v1/lists/"+listId, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            'Authorization': "Bearer " + localStorage.getItem('token'),
+          },
+          body:JSON.stringify(newName),
+        });
+    
+        
+    
+      } 
+      catch (error) {
+        console.error("Error:", error);
+      }
+    
     }
 
 
