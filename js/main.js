@@ -5,7 +5,7 @@ import { getCurrentUser } from "./userService.js"
 import { createBoard } from "./boardsService.js"
 import { createList } from "./listsServices.js"
 import { getLists } from "./listsServices.js"
-import { addTag, createComment, deleteCard, removeTag, updateTagsInputs } from "./cardService.js"
+import { addTag, createComment, deleteCard, removeTag, updateCardName, updateTagsInputs } from "./cardService.js"
 
 
 
@@ -284,6 +284,20 @@ let newFav ={
     clearTagsCheckBoxes()
    
   }
+
+  //alterando nome do card
+   const cardName = document.querySelector('#cardDisplayName')
+
+   cardName.addEventListener("change",e=>{
+    
+    let newName = {
+      "name": e.target.value
+    }
+    if(newName.name){
+      updateCardName(newName)
+    }
+
+   })
 
     //criando uma lista
     

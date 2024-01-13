@@ -218,11 +218,30 @@ async function updateCardListId(cardId,listId){
 
 }
 
+async function updateCardName(newName){
+
+  try {
+    const response = await fetch("http://localhost:8087/api/v1/cards/"+localStorage.getItem("currentCardId"), {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': "Bearer " + localStorage.getItem('token'),
+      },
+      body:JSON.stringify(newName),
+    });
+
+    getLists()
+
+  } 
+  catch (error) {
+    console.error("Error:", error);
+  }
+
+}
 
 
 
 
 
 
-
-export {createCard,getCard,createComment,addTag,removeTag,updateTagsInputs,deleteCard,updateCardListId}
+export {createCard,getCard,createComment,addTag,removeTag,updateTagsInputs,deleteCard,updateCardListId,updateCardName}
