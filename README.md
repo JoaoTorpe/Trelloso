@@ -1,4 +1,4 @@
-# Projeto Trello Client
+# Projeto da disciplina de Desenvolvimento web
 
 O objetivo desse projeto foi criar um client-side para a API do trelloso_fastapi , backend desenvolvido em FastAPI que simula funcionalidades básicas do Trello. 
 O projeto é um Single Page Application (SPA), afim de gerar uma complexidade maior no controle da exibição dos itens.
